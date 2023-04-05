@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 def getData(filename):
     canData=[] #List to store CAN data
-    f = open(filename)
+    f = open(filename, "r", encoding="UTF-8")
     #read_file = reader(f)
     read_file =f.readlines()
     #file = list(read_file)
@@ -45,6 +45,6 @@ def dict_to_df(dict):
     df = df.drop(columns=['value'])
     return df
 #edit file name with file directory of downloaded log files
-fff_injection_df = dict_to_df(getData("CAN Bus log - injection of FFF as the speed reading.log"))
-rpm_injection_df = dict_to_df(getData("CAN Bus log - injection of RPM readings.log"))
-no_injection_df = dict_to_df(getData("CAN bus log - no injection of messages.log"))
+fff_injection_df = dict_to_df(getData("datasets/CAN Bus log - injection of FFF as the speed reading.log"))
+rpm_injection_df = dict_to_df(getData("datasets/CAN Bus log - injection of RPM readings.log"))
+no_injection_df = dict_to_df(getData("datasets/CAN bus log - no injection of messages.log"))
