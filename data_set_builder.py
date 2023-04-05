@@ -44,7 +44,23 @@ def dict_to_df(dict):
     df.loc[df['Speed'] == 1, 'Speed'] = df['value']
     df = df.drop(columns=['value'])
     return df
+
+
 #edit file name with file directory of downloaded log files
 fff_injection_df = dict_to_df(getData("datasets/CAN Bus log - injection of FFF as the speed reading.log"))
 rpm_injection_df = dict_to_df(getData("datasets/CAN Bus log - injection of RPM readings.log"))
 no_injection_df = dict_to_df(getData("datasets/CAN bus log - no injection of messages.log"))
+
+print(fff_injection_df.head())
+print(rpm_injection_df.head())
+print(no_injection_df.head())
+print("Writing data to csv files.")
+
+fff_injection_df.to_csv("datasets/fff_injection.csv")
+print("Created a new file for fff_injection.csv!")
+
+rpm_injection_df.to_csv("datasets/rpm_injection.csv")
+print("Created a new file rpm_injection.csv")
+
+no_injection_df.to_csv("datasets/no_injection.csv")
+print("Created a new file no_injection.csv")
